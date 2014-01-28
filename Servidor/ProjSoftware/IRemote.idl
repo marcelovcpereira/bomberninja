@@ -1,0 +1,33 @@
+struct ObjetoSerial{
+       unsigned short x;
+       unsigned short y;
+       unsigned short tipo;
+       unsigned short info1;
+       unsigned short info2;
+       unsigned short info3;
+       unsigned short info4;
+       unsigned short info5;
+       unsigned short info6;
+       unsigned short info7;
+       unsigned short info8;
+       unsigned short info9;
+       unsigned short info10;
+};
+
+struct Teclado{
+       sequence<char> keys;
+};
+
+struct VetorObjetos{
+       sequence<ObjetoSerial> vetor;
+};
+
+
+
+interface IRemote{
+
+         void sendKeys ( in Teclado keys );
+	 boolean pronto();
+	 boolean acabou();
+	 ObjetoSerial getProximo();
+};

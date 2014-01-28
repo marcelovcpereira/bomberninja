@@ -1,0 +1,42 @@
+struct InfoHeroi {
+	short px, py;
+	octet vidas, sangue, stamina, direcao, tipo, waiting, stepAtual;
+	boolean vivo;
+};
+
+struct InfoInimigo {
+	short px, py;
+	octet direcao, tipo, waiting, stepAtual;
+};
+
+struct InfoItem {
+	short px, py;
+	octet tipo;
+};
+
+typedef sequence<InfoInimigo> SequenciaInfoInimigos;
+typedef sequence<InfoItem> SequenciaInfoItens;
+
+struct InfoFase {
+	InfoHeroi heroi1, heroi2;
+	SequenciaInfoInimigos infoInimigos;
+	SequenciaInfoItens infoItens;
+	boolean passou, gameOver;
+	short cenariox, cenarioy;
+	octet framesVideo;
+};
+
+struct InfoInicial {
+	InfoHeroi heroi1, heroi2;
+	octet numInimigos, numItens, cenario;
+	SequenciaInfoInimigos infoInimigos;
+	SequenciaInfoItens infoItens;
+};
+
+interface InterfaceServidor {
+	InfoInicial getInfoInicial ();
+	InfoFase getInfoFase();
+	void reagirTecla (in octet tecla);
+	void setEstadoCliente (in octet ready);
+	octet getEstadoServidor ();
+};
